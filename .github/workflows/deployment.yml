@@ -13,7 +13,6 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     
     steps:
-      - uses: actions/checkout@v2
       
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
