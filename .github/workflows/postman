@@ -1,5 +1,6 @@
-name: postman
+name: postman api tests
 
+# Run Postman's headless collection runner alias newman
 # Only trigger, when the workflow described in maven-build.yml succeeded
 on:
   workflow_run:
