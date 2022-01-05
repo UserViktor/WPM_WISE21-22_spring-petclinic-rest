@@ -1,0 +1,21 @@
+name: postman api tests
+
+# Run Postman's headless collection runner alias newman
+# Only trigger, when the workflow described in maven-build.yml succeeded
+on:
+  workflow_run:
+    workflows: ["Java CI with Maven"]
+    types:
+      - completed
+
+jobs:
+  on-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
+    steps:
+      - uses: actions/checkout@master
+      - uses: matt-ball/newman-action@master
+        with:
+        collection: postman_collection.json
+        environment: postman_environment.json
