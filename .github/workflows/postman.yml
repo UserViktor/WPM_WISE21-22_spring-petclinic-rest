@@ -15,6 +15,7 @@ jobs:
     
     steps:
       - uses: actions/checkout@master
-      - uses: matt-ball/newman-action@master
+      - uses: matt-ball/newman-action@v1.0.4
         with:
-        collection: postman.json
+        collection: postman_collection.json
+        environment: postman_environment.json
