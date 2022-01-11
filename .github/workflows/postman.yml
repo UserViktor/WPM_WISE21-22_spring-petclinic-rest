@@ -15,9 +15,12 @@ jobs:
     
     services:
       rest-api:
-        image: siincy/wpm_wise2122_devops_spring_petclinic_deployment:rest
-        ports:
-           - 9966:9966
+       image: siincy/wpm_wise2122_devops_spring_petclinic_deployment:rest
+       credentials:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_TOKEN
+       ports:
+          - 9966:9966
     
     steps:
       - uses: actions/checkout@v2
