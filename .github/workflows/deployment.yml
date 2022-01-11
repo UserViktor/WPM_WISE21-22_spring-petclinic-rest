@@ -3,7 +3,7 @@ name: build docker and push
 # Only trigger, when the workflow described in maven-build.yml succeeded
 on:
   workflow_run:
-    workflows: ["Java CI with Maven"]
+    workflows: ["Postman api tests"]
     types:
       - completed
 
