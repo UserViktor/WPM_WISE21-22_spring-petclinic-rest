@@ -20,7 +20,7 @@ jobs:
         name: Build & push Docker image
         with:
           image: siincy/wpm_wise2122_devops_spring_petclinic_deployment
-          tag: rest-api , latest
+          tags: rest-api , latest
           registry: docker.io
           labels: spring-petclinic-rest-api
           username: ${{ secrets.DOCKER_USERNAME }}
