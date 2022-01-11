@@ -15,7 +15,7 @@ jobs:
     
     services:
       rest-api:
-        image: siincy:wpm_wise2122_devops_spring_petclinic_deployment:rest
+        image: siincy/wpm_wise2122_devops_spring_petclinic_deployment:rest
         ports:
            - 9966:9966
     
