@@ -25,6 +25,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      - name: Sleep for 30 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '30s' 
+      
       - name: Test_Postman
         uses: matt-ball/newman-action@master
         with:
