@@ -26,8 +26,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          push: false
           tags: spring-petclonic-rest:latest
+          push: false
       
       - name: Sleep for 30 seconds
         uses: jakejarvis/wait-action@master
