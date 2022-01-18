@@ -29,6 +29,11 @@ jobs:
           push: false
           tags: spring-petclonic-rest:latest
       
+      - name: Sleep for 30 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '60s' 
+      
       - name: Run Container
         uses: addnab/docker-run-action@v3
         with:
