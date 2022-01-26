@@ -1,8 +1,10 @@
 package org.springframework.samples.petclinic.mapper;
 
 import org.mapstruct.Mapper;
-import org.springframework.samples.petclinic.dto.PetDto;
-import org.springframework.samples.petclinic.dto.PetTypeDto;
+import org.mapstruct.Mapping;
+import org.springframework.samples.petclinic.rest.dto.PetDto;
+import org.springframework.samples.petclinic.rest.dto.PetFieldsDto;
+import org.springframework.samples.petclinic.rest.dto.PetTypeDto;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
 
@@ -13,6 +15,8 @@ import java.util.Collection;
  */
 @Mapper
 public interface PetMapper {
+
+    @Mapping(source = "owner.id", target = "ownerId")
     PetDto toPetDto(Pet pet);
 
     Collection<PetDto> toPetsDto(Collection<Pet> pets);
@@ -20,6 +24,8 @@ public interface PetMapper {
     Collection<Pet> toPets(Collection<PetDto> pets);
 
     Pet toPet(PetDto petDto);
+
+    Pet toPet(PetFieldsDto petFieldsDto);
 
     PetTypeDto toPetTypeDto(PetType petType);
 
