@@ -29,10 +29,10 @@ jobs:
       - name: Start project
         run: nohup ./mvnw spring-boot:run &
         
-      - name: Sleep for 30 seconds
+      - name: Sleep for 60 seconds
         uses: jakejarvis/wait-action@master
         with:
-          time: '240s' 
+          time: '60s' 
         
       - name: Test_Postman
         uses: matt-ball/newman-action@master
