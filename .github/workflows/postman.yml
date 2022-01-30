@@ -26,10 +26,10 @@ jobs:
       - name: grant access
         run: sudo chmod +x mvnw
       
-      - name: Sleep for 30 seconds
+      - name: Sleep for 60 seconds
         uses: jakejarvis/wait-action@master
         with:
-            time: '30s'
+            time: '60s'
       
       - name: Start project
         run: nohup ./mvnw spring-boot:run &
