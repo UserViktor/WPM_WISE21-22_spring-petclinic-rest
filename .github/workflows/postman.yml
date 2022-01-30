@@ -29,11 +29,6 @@ jobs:
       - name: Start project
         run: nohup ./mvnw spring-boot:run &
         
-      - name: Sleep for 60 seconds
-        uses: jakejarvis/wait-action@master
-        with:
-          time: '60s' 
-        
       - name: Test_Postman
         uses: matt-ball/newman-action@master
         with:        
