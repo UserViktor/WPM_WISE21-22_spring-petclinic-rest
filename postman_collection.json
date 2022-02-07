@@ -12,9 +12,15 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Healthcheck of the REST API\", function () {",
+							"pm.test(\"Successful GET request\", function () {",
 							"    pm.response.to.have.status(200);",
-							"});"
+							"});",
+							"",
+							"pm.test(\"Healthcheck status is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).have.property('status', 'UP');",
+							"});",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -44,6 +50,330 @@
 						"petclinic",
 						"actuator",
 						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Advanced_Search_Pet_Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful GET request\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Pet_Search:First Owner and Pet are correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0]).have.property('firstName', 'Jeff');",
+							"    pm.expect(jsonData[0]).have.property('lastName', 'Black');",
+							"    pm.expect(jsonData[0].pets[0]).have.property('name', 'Lucky');",
+							"    pm.expect(jsonData[0].pets[0].type).have.property('name', 'bird');",
+							"});",
+							"",
+							"pm.test(\"Pet_Search:Second Owner and Pet are correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[1]).have.property('firstName', 'Carlos');",
+							"    pm.expect(jsonData[1]).have.property('lastName', 'Estaban');",
+							"    pm.expect(jsonData[1].pets[0]).have.property('name', 'Lucky');",
+							"    pm.expect(jsonData[1].pets[0].type).have.property('name', 'dog');",
+							"    pm.expect(jsonData[1].pets[1]).have.property('name', 'Sly');",
+							"    pm.expect(jsonData[1].pets[1].type).have.property('name', 'cat');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9966/petclinic/api/owners/?lastName=Lucky",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9966",
+					"path": [
+						"petclinic",
+						"api",
+						"owners",
+						""
+					],
+					"query": [
+						{
+							"key": "lastName",
+							"value": "Lucky"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Advanced_Search_Owner_LastName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful GET request\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Owner_Search:Owner is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0]).have.property('firstName', 'George');",
+							"    pm.expect(jsonData[0]).have.property('lastName', 'Franklin');",
+							"    pm.expect(jsonData[0].pets[0]).have.property('name', 'Leo');",
+							"    pm.expect(jsonData[0].pets[0].type).have.property('name', 'cat');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9966/petclinic/api/owners/?lastName=Franklin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9966",
+					"path": [
+						"petclinic",
+						"api",
+						"owners",
+						""
+					],
+					"query": [
+						{
+							"key": "lastName",
+							"value": "Franklin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Advanced_Search_Visit_Description",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful GET request\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Visit_Search:Visit is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0]).have.property('firstName', 'Jean');",
+							"    pm.expect(jsonData[0]).have.property('lastName', 'Coleman');",
+							"    //First Pet ",
+							"    pm.expect(jsonData[0].pets[0]).have.property('name', 'Max');",
+							"    pm.expect(jsonData[0].pets[0].type).have.property('name', 'cat');",
+							"    //First Visit",
+							"    pm.expect(jsonData[0].pets[0].visits[0]).have.property('date', '2013-01-03');",
+							"    pm.expect(jsonData[0].pets[0].visits[0]).have.property('description', 'neutered');",
+							"    //Second Visit",
+							"    pm.expect(jsonData[0].pets[0].visits[1]).have.property('date', '2013-01-02');",
+							"    pm.expect(jsonData[0].pets[0].visits[1]).have.property('description', 'rabies shot');",
+							"    //Second Pet ",
+							"    pm.expect(jsonData[0].pets[1]).have.property('name', 'Samantha');",
+							"    pm.expect(jsonData[0].pets[1].type).have.property('name', 'cat');",
+							"    //First Visit",
+							"    pm.expect(jsonData[0].pets[1].visits[0]).have.property('date', '2013-01-04');",
+							"    pm.expect(jsonData[0].pets[1].visits[0]).have.property('description', 'spayed');",
+							"    //Second Visit",
+							"    pm.expect(jsonData[0].pets[1].visits[1]).have.property('date', '2013-01-01');",
+							"    pm.expect(jsonData[0].pets[1].visits[1]).have.property('description', 'rabies shot');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9966/petclinic/api/owners/?lastName=spayed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9966",
+					"path": [
+						"petclinic",
+						"api",
+						"owners",
+						""
+					],
+					"query": [
+						{
+							"key": "lastName",
+							"value": "spayed"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Advanced_Search_Empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful GET request\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Empty_Search:All Owners are returned\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    //First Owner",
+							"    pm.expect(jsonData[0]).have.property('firstName', 'George');",
+							"    pm.expect(jsonData[0]).have.property('lastName', 'Franklin');",
+							"    //Second Owner",
+							"    pm.expect(jsonData[1]).have.property('firstName', 'Betty');",
+							"    pm.expect(jsonData[1]).have.property('lastName', 'Davis');",
+							"    //Third Owner",
+							"    pm.expect(jsonData[2]).have.property('firstName', 'Eduardo');",
+							"    pm.expect(jsonData[2]).have.property('lastName', 'Rodriquez');",
+							"    //Fourth Owner",
+							"    pm.expect(jsonData[3]).have.property('firstName', 'Harold');",
+							"    pm.expect(jsonData[3]).have.property('lastName', 'Davis');",
+							"    //Fifth Owner",
+							"    pm.expect(jsonData[4]).have.property('firstName', 'Peter');",
+							"    pm.expect(jsonData[4]).have.property('lastName', 'McTavish');",
+							"    //Sixth Owner",
+							"    pm.expect(jsonData[5]).have.property('firstName', 'Jean');",
+							"    pm.expect(jsonData[5]).have.property('lastName', 'Coleman');",
+							"    //Seventh Owner",
+							"    pm.expect(jsonData[6]).have.property('firstName', 'Jeff');",
+							"    pm.expect(jsonData[6]).have.property('lastName', 'Black');",
+							"    //Eight Owner",
+							"    pm.expect(jsonData[7]).have.property('firstName', 'Maria');",
+							"    pm.expect(jsonData[7]).have.property('lastName', 'Escobito');",
+							"    //Ninth Owner",
+							"    pm.expect(jsonData[8]).have.property('firstName', 'David');",
+							"    pm.expect(jsonData[8]).have.property('lastName', 'Schroeder');",
+							"    //Tenth Owner",
+							"    pm.expect(jsonData[9]).have.property('firstName', 'Carlos');",
+							"    pm.expect(jsonData[9]).have.property('lastName', 'Estaban');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9966/petclinic/api/owners/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9966",
+					"path": [
+						"petclinic",
+						"api",
+						"owners",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Advanced_Search_Integers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Not Found Status Code\", () => {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9966/petclinic/api/owners/?lastName=123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9966",
+					"path": [
+						"petclinic",
+						"api",
+						"owners",
+						""
+					],
+					"query": [
+						{
+							"key": "lastName",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Advanced_Search_Date",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Not Found Status Code\", () => {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9966/petclinic/api/owners/?lastName=2010-09-07",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9966",
+					"path": [
+						"petclinic",
+						"api",
+						"owners",
+						""
+					],
+					"query": [
+						{
+							"key": "lastName",
+							"value": "2010-09-07"
+						}
 					]
 				}
 			},
