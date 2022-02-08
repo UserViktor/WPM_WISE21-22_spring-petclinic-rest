@@ -1,11 +1,11 @@
-# REST version of Spring PetClinic Sample Application (spring-framework-petclinic extend ) 
+# Fork of the REST version of Spring PetClinic Sample Application (Original:[spring-petclinic-rest](https://github.com/spring-petclinic/spring-petclinic-rest/)) used for the elective module 'Testen und DevOps in der agilen Softwareentwicklung' in the City University of Applied Sciences in Bremen.   
 
-[![Build Status](https://github.com/spring-petclinic/spring-petclinic-rest/actions/workflows/maven-build.yml/badge.svg)](https://github.com/spring-petclinic/spring-petclinic-rest/actions/workflows/maven-build.yml)
+[![Build Status](https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-rest/actions/workflows/deployment.yml/badge.svg)](https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-rest/actions/workflows/deployment.yml)
 
 This backend version of the Spring Petclinic application only provides a REST API. **There is no UI**.
-The [spring-petclinic-angular project](https://github.com/spring-petclinic/spring-petclinic-angular) is a Angular front-end application which consumes the REST API.
+The [WPM_WISE21-22_spring-petclinic-angular project](https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-angular) is a Angular front-end application which consumes the REST API.
 
-## Understanding the Spring Petclinic application with a few diagrams
+## Understanding the Original Spring Petclinic application with a few diagrams
 
 [See the presentation of the Spring Petclinic Framework version](http://fr.slideshare.net/AntoineRey/spring-framework-petclinic-sample-application)
 
@@ -17,14 +17,14 @@ The [spring-petclinic-angular project](https://github.com/spring-petclinic/sprin
 
 ### With maven command line
 ```
-git clone https://github.com/spring-petclinic/spring-petclinic-rest.git
-cd spring-petclinic-rest
+git clone https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-rest.git
+cd WPM_WISE21-22_spring-petclinic-rest.git
 ./mvnw spring-boot:run
 ```
 
 ### With Docker
 ```
-docker run -p 9966:9966 springcommunity/spring-petclinic-rest
+docker run -p 9966:9966 siincy/wpm_wise2122_devops_spring_petclinic_deployment:rest
 ```
 
 You can then access petclinic here: [http://localhost:9966/petclinic/](http://localhost:9966/petclinic/)
@@ -41,17 +41,12 @@ You can reach the swagger UI with this URL
 You then can get the Open API description reaching this URL [localhost:9966/petclinic/v3/api-docs](localhost:9966/petclinic/v3/api-docs).
 
 ## Screenshot of the Angular client
-
-<img width="1427" alt="spring-petclinic-angular2" src="https://cloud.githubusercontent.com/assets/838318/23263243/f4509c4a-f9dd-11e6-951b-69d0ef72d8bd.png">
-
-## In case you find a bug/suggested improvement for Spring Petclinic
-Our issue tracker is available here: https://github.com/spring-petclinic/spring-petclinic-rest/issues
-
+//TODO: Image aktualisieren
+<img width="1427" alt="WPM_WISE21-22_spring-petclinic-rest" src="https://cloud.githubusercontent.com/assets/838318/23263243/f4509c4a-f9dd-11e6-951b-69d0ef72d8bd.png">
 
 ## Database configuration
 
-In its default configuration, Petclinic uses an in-memory database (HSQLDB) which
-gets populated at startup with data.
+In its default configuration, Petclinic uses an in-memory database (HSQLDB) which gets populated at startup with data.
 A similar setups is provided for MySql and PostgreSQL in case a persistent database configuration is needed.
 To run petclinic locally using persistent database, it is needed to change profile defined in application.properties file.
 
@@ -131,27 +126,23 @@ POST /api/users
 }
 ```
 
-## Working with Petclinic in Eclipse/STS
+## Working with Petclinic in IntelliJ IDEA
 
 ### prerequisites
 The following items should be installed in your system:
 * Maven 3 (https://maven.apache.org/install.html)
 * git command line tool (https://help.github.com/articles/set-up-git)
-* Eclipse with the m2e plugin (m2e is installed by default when using the STS (http://www.springsource.org/sts) distribution of Eclipse)
-
-Note: when m2e is available, there is an m2 icon in Help -> About dialog.
-If m2e is not there, just follow the install process here: http://eclipse.org/m2e/download/
-
+* IntelliJ IDEA with the Maven Helper plugin and JPA-Buddy plugin installed
 
 ### Steps:
 
 1) In the command line
 ```
-git clone https://github.com/spring-petclinic/spring-petclinic-rest.git
+git clone https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-rest.git
 ```
-2) Inside Eclipse
+2) Inside IntelliJ
 ```
-File -> Import -> Maven -> Existing Maven project
+File -> Open 
 ```
 
 
@@ -165,10 +156,10 @@ File -> Import -> Maven -> Existing Maven project
 | JPA | [jpa folder](src/main/java/org/springframework/samples/petclinic/repository/jpa) |
 | Spring Data JPA | [springdatajpa folder](src/main/java/org/springframework/samples/petclinic/repository/springdatajpa) |
 | Tests | [AbstractClinicServiceTests.java](src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java) |
-
+| Postman Tests | [postman_collection.json](postman_collection.json) |
 
 ## Publishing a Docker image
-
+//TODO: Prüfen ob es sich lohnt umzusteigen
 This application uses [Google Jib]([https://github.com/GoogleContainerTools/jib) to build an optimized Docker image
 into the [Docker Hub](https://cloud.docker.com/u/springcommunity/repository/docker/springcommunity/spring-petclinic-rest/)
 repository.
@@ -179,18 +170,6 @@ The [pom.xml](pom.xml) has been configured to publish the image with a the `spri
 The Spring Petclinic master branch in the main [spring-projects](https://github.com/spring-projects/spring-petclinic)
 GitHub org is the "canonical" implementation, currently based on Spring Boot and Thymeleaf.
 
-This [spring-petclinic-rest](https://github.com/spring-petclinic/spring-petclinic-rest/) project is one of the [several forks](https://spring-petclinic.github.io/docs/forks.html) 
+This [spring-petclinic-rest](https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-rest) project is an fork of the [spring-petclinic-rest](https://github.com/spring-petclinic/spring-petclinic-rest/) whereas the spring-petclinic-rest is one of the [several forks](https://spring-petclinic.github.io/docs/forks.html) 
 hosted in a special GitHub org: [spring-petclinic](https://github.com/spring-petclinic).
-If you have a special interest in a different technology stack
-that could be used to implement the Pet Clinic then please join the community there.
-
-
-# Contributing
-
-The [issue tracker](https://github.com/spring-petclinic/spring-petclinic-rest/issues) is the preferred channel for bug reports, features requests and submitting pull requests.
-
-For pull requests, editor preferences are available in the [editor config](https://github.com/spring-petclinic/spring-petclinic-rest/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
-
-
-
-
+If you have a special interest in a different technology stack that could be used to implement the Pet Clinic then please join the community there.
