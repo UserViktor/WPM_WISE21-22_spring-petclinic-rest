@@ -41,8 +41,8 @@ You can reach the swagger UI with this URL
 You then can get the Open API description reaching this URL [localhost:9966/petclinic/v3/api-docs](localhost:9966/petclinic/v3/api-docs).
 
 ## Screenshot of the Angular client
-//TODO: Image aktualisieren
-<img width="1427" alt="WPM_WISE21-22_spring-petclinic-rest" src="https://cloud.githubusercontent.com/assets/838318/23263243/f4509c4a-f9dd-11e6-951b-69d0ef72d8bd.png">
+
+<img width="1427" alt="WPM_WISE21-22_spring-petclinic-rest" src="angular_petclinic.png">
 
 ## Database configuration
 
@@ -159,7 +159,7 @@ File -> Open
 | Postman Tests | [postman_collection.json](postman_collection.json) |
 
 ## Publishing a Docker image
-//TODO: Prüfen ob es sich lohnt umzusteigen
+//TODO: Prüfen ob es sich lohnt umzusteigen \n
 This application uses [Google Jib]([https://github.com/GoogleContainerTools/jib) to build an optimized Docker image
 into the [Docker Hub](https://cloud.docker.com/u/springcommunity/repository/docker/springcommunity/spring-petclinic-rest/)
 repository.
