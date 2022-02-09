@@ -1,13 +1,15 @@
 # Fork of the REST version of Spring PetClinic Sample Application (Original:[spring-petclinic-rest](https://github.com/spring-petclinic/spring-petclinic-rest/)) used for the elective module 'Testen und DevOps in der agilen Softwareentwicklung' in the City University of Applied Sciences in Bremen.   
 
-[![Build Status](https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-rest/actions/workflows/deployment.yml/badge.svg)](https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-rest/actions/workflows/deployment.yml)
+[![Build Status](https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-rest/actions/workflows/maven-build.yml/badge.svg)](https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-rest/actions/workflows/maven-build.yml) 
+[![Build Status](https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-rest/actions/workflows/postman.yml/badge.svg)](https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-rest/actions/workflows/postman.yml) 
+[![Build Status](https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-rest/actions/workflows/deployment.yml/badge.svg)](https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-rest/actions/workflows/deployment.yml) 
 
 This backend version of the Spring Petclinic application only provides a REST API. **There is no UI**.
 The [WPM_WISE21-22_spring-petclinic-angular project](https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-angular) is a Angular front-end application which consumes the REST API.
 
 ## Understanding the Original Spring Petclinic application with a few diagrams
 
-[See the presentation of the Spring Petclinic Framework version](http://fr.slideshare.net/AntoineRey/spring-framework-petclinic-sample-application)
+[See the presentation of the Original Spring Petclinic Framework version](http://fr.slideshare.net/AntoineRey/spring-framework-petclinic-sample-application)
 
 ### Petclinic ER Model
 
@@ -18,7 +20,7 @@ The [WPM_WISE21-22_spring-petclinic-angular project](https://github.com/UserVikt
 ### With maven command line
 ```
 git clone https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-rest.git
-cd WPM_WISE21-22_spring-petclinic-rest.git
+cd WPM_WISE21-22_spring-petclinic-rest
 ./mvnw spring-boot:run
 ```
 
@@ -38,7 +40,7 @@ There are actuator health check and info routes as well:
 You can reach the swagger UI with this URL
 [http://localhost:9966/petclinic/](http://localhost:9966/petclinic/swagger-ui.html).
 
-You then can get the Open API description reaching this URL [localhost:9966/petclinic/v3/api-docs](localhost:9966/petclinic/v3/api-docs).
+You then can get the Open API description reaching this URL [http://localhost:9966/petclinic/v3/api-docs](http://localhost:9966/petclinic/v3/api-docs).
 
 ## Screenshot of the Angular client
 
@@ -157,13 +159,6 @@ File -> Open
 | Spring Data JPA | [springdatajpa folder](src/main/java/org/springframework/samples/petclinic/repository/springdatajpa) |
 | Tests | [AbstractClinicServiceTests.java](src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java) |
 | Postman Tests | [postman_collection.json](postman_collection.json) |
-
-## Publishing a Docker image
-//TODO: Prüfen ob es sich lohnt umzusteigen \n
-This application uses [Google Jib]([https://github.com/GoogleContainerTools/jib) to build an optimized Docker image
-into the [Docker Hub](https://cloud.docker.com/u/springcommunity/repository/docker/springcommunity/spring-petclinic-rest/)
-repository.
-The [pom.xml](pom.xml) has been configured to publish the image with a the `springcommunity/spring-petclinic-rest`image name.
 
 ## Interesting Spring Petclinic forks
 
