@@ -24,11 +24,6 @@ cd WPM_WISE21-22_spring-petclinic-rest
 ./mvnw spring-boot:run
 ```
 
-### With Docker
-```
-docker run -p 9966:9966 siincy/wpm_wise2122_devops_spring_petclinic_deployment:rest
-```
-
 You can then access petclinic here: [http://localhost:9966/petclinic/](http://localhost:9966/petclinic/)
 
 There are actuator health check and info routes as well: 
