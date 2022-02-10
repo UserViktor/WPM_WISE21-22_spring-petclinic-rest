@@ -149,9 +149,9 @@ File -> Open
 
 ## Running end-to-end tests(application must be running)
 ### prerequisites
-* Postman [install](https://learning.postman.com/docs/getting-started/installation-and-updates/)
-OR
-* Newman (npm install -g newman) [install](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/)
+The following items should be installed in your system:
+* Postman (https://learning.postman.com/docs/getting-started/installation-and-updates/)
+* Newman (https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/)
 
 ### Run with postman
 ```
