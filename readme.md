@@ -147,6 +147,20 @@ git clone https://github.com/UserViktor/WPM_WISE21-22_spring-petclinic-rest.git
 File -> Open 
 ```
 
+## Running end-to-end tests(application must be running)
+### prerequisites
+* Postman [install](https://learning.postman.com/docs/getting-started/installation-and-updates/)
+OR
+* Newman (npm install -g newman) [install](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/)
+
+### Run with postman
+```
+postman run postman_collection.json
+```
+### Run Headless
+```
+newman run postman_collection.json
+```
 
 ## Looking for something in particular?
 
